@@ -27,5 +27,5 @@ export default {
       },
     },
   },
-  plugins: [forms],
+  plugins: [forms()],
 } satisfies Config;

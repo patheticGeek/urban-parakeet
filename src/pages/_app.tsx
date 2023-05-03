@@ -25,7 +25,12 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         }}
       />
 
-      <main className={clsx(poppins.variable, "min-h-screen font-sans")}>
+      <main
+        className={clsx(
+          poppins.variable,
+          "flex min-h-screen flex-col font-sans"
+        )}
+      >
         <Component {...pageProps} />
       </main>
     </>
