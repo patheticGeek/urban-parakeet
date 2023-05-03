@@ -24,8 +24,10 @@
     "clsx": "^1.2.1",
     "eslint-plugin-import": "^2.27.5",
     "next": "^13.2.4",
+    "next-seo": "^6.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sib-api-v3-typescript": "^2.2.2",
     "superjson": "1.12.2",
     "zod": "^3.21.4"
   },

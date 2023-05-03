@@ -12,7 +12,7 @@ const getBaseUrl = () => {
 };
 
 export const api = createTRPCNext<AppRouter>({
-  config() {
+  config({ ctx }) {
     return {
       transformer: superjson,
       links: [
@@ -21,11 +21,37 @@ export const api = createTRPCNext<AppRouter>({
             process.env.NODE_ENV === "development" ||
             (opts.direction === "down" && opts.result instanceof Error),
         }),
-        httpBatchLink({ url: `${getBaseUrl()}/api/trpc` }),
+        httpBatchLink({
+          url: `${getBaseUrl()}/api/trpc`,
+          // pass headers from req in ssr
+          headers:
+            typeof window === "undefined"
+              ? undefined
+              : () => {
+                  if (!ctx?.req?.headers) {
+                    return {};
+                  }
+
+                  const {
+                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                    connection: _connection,
+                    ...headers
+                  } = ctx.req.headers;
+                  return headers;
+                },
+        }),
       ],
+      queryClientConfig: {
+        defaultOptions: {
+          queries: {
+            refetchOnMount: false,
+            refetchOnWindowFocus: false,
+          },
+        },
+      },
     };
   },
-  ssr: false,
+  ssr: true,
 });
 
 export type RouterInputs = inferRouterInputs<AppRouter>;
