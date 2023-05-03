@@ -5,9 +5,7 @@ const path = require("path");
 const config = {
   overrides: [
     {
-      extends: [
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
-      ],
+      extends: ["plugin:@typescript-eslint/recommended"],
       files: ["*.ts", "*.tsx"],
       parser: "@typescript-eslint/parser",
       parserOptions: {

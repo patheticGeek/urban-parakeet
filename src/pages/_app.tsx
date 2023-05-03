@@ -1,9 +1,9 @@
 import { type AppType } from "next/app";
-import Head from "next/head";
 import { Poppins } from "next/font/google";
 import clsx from "clsx";
-import { api } from "~/utils/api";
+import { api } from "~/utils/api/client";
 import "~/styles/globals.css";
+import { DefaultSeo } from "next-seo";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -14,9 +14,16 @@ const poppins = Poppins({
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <>
-      <Head>
-        <title>Wisdom Circle</title>
-      </Head>
+      <DefaultSeo
+        title="Wisdom Circle"
+        titleTemplate="%s - Wisdom Circle"
+        openGraph={{
+          type: "website",
+          locale: "en_US",
+          url: "https://wisdomcircle.com/",
+          siteName: "Wisdom Circle",
+        }}
+      />
 
       <main className={clsx(poppins.variable, "min-h-screen font-sans")}>
         <Component {...pageProps} />
