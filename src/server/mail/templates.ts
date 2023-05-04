@@ -7,16 +7,30 @@ const getBaseUrl = () => {
 
 export type MailContent = { subject: string; body: string };
 
-export const verificationEmail = (token: string): MailContent => ({
-  subject: "Verify your email - Wisdom Circle",
-  body: `
+export const verificationEmail = ({
+  email,
+  name,
+  code,
+}: {
+  email: string;
+  name: string;
+  code: string;
+}): MailContent => {
+  const params = new URLSearchParams({ email, code });
+  const path = "/verifyEmail";
+
+  const url = `${getBaseUrl()}${path}?${params.toString()}`;
+
+  return {
+    subject: "Verify your email - Wisdom Circle",
+    body: `
   <html>
     <head></head>
     <body>
-      <p>Hello,</p>
+      <p>Hello ${name},</p>
       <br />
       <p>Please verify your email by clicking the link below.</p>
-      <p><a href="${getBaseUrl()}/auth/verifyEmail?token=${token}">Verify my email</a></p>
+      <p><a href="${url}">Verify my email</a></p>
       <br />
       <p>If you did not request this, please ignore this email.</p>
       <br />
@@ -25,4 +39,5 @@ export const verificationEmail = (token: string): MailContent => ({
     </body>
   </html>
   `,
-});
+  };
+};

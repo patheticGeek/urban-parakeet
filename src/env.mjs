@@ -8,6 +8,8 @@ export const env = createEnv({
     VERCEL_URL: z.string().optional(),
     DATABASE_URL: z.string().url(),
     SIB_API_KEY: z.string().min(1),
+    JWT_KEY: z.string().min(1),
+    PSWD_KEY: z.string().min(1),
   },
 
   client: {},
@@ -18,5 +20,7 @@ export const env = createEnv({
     VERCEL_URL: process.env.VERCEL_URL,
     PORT: process.env.PORT,
     SIB_API_KEY: process.env.SIB_API_KEY,
+    JWT_KEY: process.env.JWT_KEY,
+    PSWD_KEY: process.env.PSWD_KEY,
   },
 });

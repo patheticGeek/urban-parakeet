@@ -8,16 +8,17 @@ import type {
 } from "next";
 import { prisma } from "../db";
 import { mail } from "../mail";
+import { jwt } from "../jwt";
 
 type CreateCtxOptions =
   | { req: NextApiRequest; res: NextApiResponse }
   | Pick<GetServerSidePropsContext, "req" | "res">;
 
 export const createTRPCContext = (opts: CreateCtxOptions) => {
-  return { prisma, mail, ...opts };
+  return { prisma, mail, jwt, ...opts };
 };
 
-const t = initTRPC.context<typeof createTRPCContext>().create({
+export const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
   errorFormatter({ shape, error }) {
     return {
@@ -30,7 +31,3 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
     };
   },
 });
-
-export const createTRPCRouter = t.router;
-
-export const publicProcedure = t.procedure;

@@ -25,7 +25,7 @@ export const api = createTRPCNext<AppRouter>({
           url: `${getBaseUrl()}/api/trpc`,
           // pass headers from req in ssr
           headers:
-            typeof window === "undefined"
+            typeof window !== "undefined"
               ? undefined
               : () => {
                   if (!ctx?.req?.headers) {

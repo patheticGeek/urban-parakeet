@@ -3,12 +3,33 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
-    url      = env("DATABASE_URL")
+    provider     = "mysql"
+    url          = env("DATABASE_URL")
+    relationMode = "prisma"
 }
 
-model Example {
+model User {
     id        String   @id @default(cuid())
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+
+    name     String
+    email    String @unique
+    password String
+
+    verified Boolean @default(false)
+
+    verification   UserVerification @relation(fields: [verificationId], references: [id])
+    verificationId String           @unique
+}
+
+model UserVerification {
+    id String @id @default(cuid())
+
+    createdAt DateTime @default(now())
+
+    code        String
+    emailSentAt DateTime
+
+    User User?
 }

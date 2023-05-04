@@ -15,3 +15,5 @@ export type SignInSchema = z.infer<typeof signInSchema>;
 
 export const signUpSchema = z.object({ name, email, password });
 export type SignUpSchema = z.infer<typeof signUpSchema>;
+
+export const verifyEmailSchema = z.object({ code: z.string().min(1), email });
