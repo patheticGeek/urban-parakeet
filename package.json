@@ -27,8 +27,10 @@
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
+    "cookie": "^0.5.0",
     "eslint-plugin-import": "^2.27.5",
     "jsonwebtoken": "^9.0.0",
+    "nanoid": "^4.0.2",
     "next": "^13.2.4",
     "next-seo": "^6.0.0",
     "react": "18.2.0",
@@ -39,7 +41,10 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cookie": "^0.5.1",
     "@types/eslint": "^8.21.3",
+    "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "^18.15.5",
     "@types/prettier": "^2.7.2",
     "@types/react": "^18.0.28",

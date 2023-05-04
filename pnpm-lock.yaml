@@ -13,7 +13,10 @@ specifiers:
   '@trpc/next': ^10.18.0
   '@trpc/react-query': ^10.18.0
   '@trpc/server': ^10.18.0
+  '@types/bcryptjs': ^2.4.2
+  '@types/cookie': ^0.5.1
   '@types/eslint': ^8.21.3
+  '@types/jsonwebtoken': ^9.0.2
   '@types/node': ^18.15.5
   '@types/prettier': ^2.7.2
   '@types/react': ^18.0.28
@@ -24,10 +27,12 @@ specifiers:
   bcryptjs: ^2.4.3
   class-variance-authority: ^0.6.0
   clsx: ^1.2.1
+  cookie: ^0.5.0
   eslint: ^7.32.0
   eslint-config-next: ^13.2.4
   eslint-plugin-import: ^2.27.5
   jsonwebtoken: ^9.0.0
+  nanoid: ^4.0.2
   next: ^13.2.4
   next-seo: ^6.0.0
   postcss: ^8.4.21
@@ -61,8 +66,10 @@ dependencies:
   bcryptjs: 2.4.3
   class-variance-authority: 0.6.0_typescript@5.0.4
   clsx: 1.2.1
+  cookie: 0.5.0
   eslint-plugin-import: 2.27.5_jkig6dn44ugxoxw6rx62fpmuqy
   jsonwebtoken: 9.0.0
+  nanoid: 4.0.2
   next: 13.3.2_biqbaboplfbrettd7655fr4n2y
   next-seo: 6.0.0_gcoziurebgu6zyuvqklu6y76di
   react: 18.2.0
@@ -73,7 +80,10 @@ dependencies:
   zod: 3.21.4
 
 devDependencies:
+  '@types/bcryptjs': 2.4.2
+  '@types/cookie': 0.5.1
   '@types/eslint': 8.37.0
+  '@types/jsonwebtoken': 9.0.2
   '@types/node': 18.16.3
   '@types/prettier': 2.7.2
   '@types/react': 18.2.0
@@ -652,6 +662,14 @@ packages:
     resolution: {integrity: sha512-0CPfGZK3v3gfAL8ylV5vDJVBQtPp47EB4Vgx6WItSXmwYQlLC39ZC3gkZ4I5cGpQKl4l3QrNNeUvIcse4hlMxA==}
     dev: false
 
+  /@types/bcryptjs/2.4.2:
+    resolution: {integrity: sha512-LiMQ6EOPob/4yUL66SZzu6Yh77cbzJFYll+ZfaPiPPFswtIlA/Fs1MzdKYA7JApHU49zQTbJGX3PDmCpIdDBRQ==}
+    dev: true
+
+  /@types/cookie/0.5.1:
+    resolution: {integrity: sha512-COUnqfB2+ckwXXSFInsFdOAWQzCCx+a5hq2ruyj+Vjund94RJQd4LG2u9hnvJrTgunKAaax7ancBYlDrNYxA0g==}
+    dev: true
+
   /@types/eslint/8.37.0:
     resolution: {integrity: sha512-Piet7dG2JBuDIfohBngQ3rCt7MgO9xCO4xIMKxBThCq5PNRB91IjlJ10eJVwfoNtvTErmxLzwBZ7rHZtbOMmFQ==}
     dependencies:
@@ -668,6 +686,12 @@ packages:
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+
+  /@types/jsonwebtoken/9.0.2:
+    resolution: {integrity: sha512-drE6uz7QBKq1fYqqoFKTDRdFCPHd5TCub75BM+D+cMx7NU9hUz7SESLfC2fSCXVFMO5Yj8sOWHuGqPgjc+fz0Q==}
+    dependencies:
+      '@types/node': 18.16.3
+    dev: true
 
   /@types/node/18.16.3:
     resolution: {integrity: sha512-OPs5WnnT1xkCBiuQrZA4+YAV4HEJejmHneyraIaxsbev5yCEr6KMwINNFP9wQeFIw8FWcoTqF3vQsa5CDaI+8Q==}
@@ -1331,6 +1355,11 @@ packages:
 
   /convert-source-map/1.9.0:
     resolution: {integrity: sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==}
+    dev: false
+
+  /cookie/0.5.0:
+    resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
+    engines: {node: '>= 0.6'}
     dev: false
 
   /copy-anything/3.0.3:
@@ -2696,6 +2725,12 @@ packages:
     resolution: {integrity: sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+
+  /nanoid/4.0.2:
+    resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==}
+    engines: {node: ^14 || ^16 || >=18}
+    hasBin: true
+    dev: false
 
   /natural-compare-lite/1.4.0:
     resolution: {integrity: sha512-Tj+HTDSJJKaZnfiuw+iaF9skdPpTo2GtEly5JHnWV/hfv2Qj/9RKsGISQtLh2ox3l5EAGw487hnBee0sIJ6v2g==}

@@ -12,7 +12,7 @@ import { type SignInSchema, signInSchema } from "~/utils/validators/auth";
 import { EmailVerificationDialog } from "~/components/EmailVerificationDialog";
 import { useState } from "react";
 
-const LoginPage = () => {
+const SignInPage = () => {
   const router = useRouter();
 
   const [verificationTo, setVerificationTo] = useState("");
@@ -28,11 +28,11 @@ const LoginPage = () => {
     resolver: zodResolver(signInSchema),
   });
 
-  const { mutateAsync: login, isLoading } = api.auth.login.useMutation({
+  const { mutateAsync: signIn, isLoading } = api.auth.signIn.useMutation({
     onSuccess: () => {
       router.push("/");
     },
-    onError(error) {
+    onError(error, data) {
       if (error.message === "email_invalid") {
         setError("email", { message: "Sorry! This email is not registered." });
       } else if (error.message === "password_invalid") {
@@ -47,7 +47,7 @@ const LoginPage = () => {
   });
 
   const onSubmit = handleSubmit((data) => {
-    login(data);
+    signIn(data);
   });
 
   return (
@@ -141,4 +141,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignInPage;

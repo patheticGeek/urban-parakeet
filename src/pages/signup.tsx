@@ -86,7 +86,7 @@ const SignUpPage = () => {
 
           <p className="mb-1 text-base font-medium text-gray">
             {"Already have an account? "}
-            <Link href="/login" className="text-royalBlue-4">
+            <Link href="/signin" className="text-royalBlue-4">
               Sign In
             </Link>
           </p>
