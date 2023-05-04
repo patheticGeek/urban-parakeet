@@ -11,6 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { type SignInSchema, signInSchema } from "~/utils/validators/auth";
 import { EmailVerificationDialog } from "~/components/EmailVerificationDialog";
 import { useState } from "react";
+import { LogoBanner } from "~/assets/MobileLogo";
 
 const SignInPage = () => {
   const router = useRouter();
@@ -51,8 +52,8 @@ const SignInPage = () => {
   });
 
   return (
-    <div className="flex h-screen flex-1 overflow-hidden">
-      <div className="flex w-1/2 max-w-[526px] items-end bg-gray text-white">
+    <div className="flex h-screen flex-1 flex-col overflow-hidden sm:flex-row">
+      <div className="hidden w-1/2 max-w-[526px] items-end bg-gray text-white sm:flex">
         <div>
           <Image src={turtlePic} alt="turtle" className="min-w-[165px]" />
         </div>
@@ -82,18 +83,27 @@ const SignInPage = () => {
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col items-center justify-center">
-        <div className="w-full max-w-sm">
-          <h1 className="text-2xl font-bold">Sign In to WisdomCircle</h1>
+      <form
+        className="flex flex-1 flex-col items-center justify-center px-5 py-8"
+        onSubmit={onSubmit}
+      >
+        <div className="flex w-full max-w-sm flex-col">
+          <div className="mx-auto my-10 block md:hidden">
+            <LogoBanner className="h-[42px]" />
+          </div>
 
-          <p className="mb-1 text-base font-medium text-gray">
+          <h1 className="text-xl font-bold md:text-2xl">
+            Sign In to WisdomCircle
+          </h1>
+
+          <p className="mb-1 text-sm font-medium text-gray md:text-base">
             {"Don't have an account? "}
             <Link href="/signup" className="text-royalBlue-4">
               Sign Up
             </Link>
           </p>
 
-          <form className="mt-6 flex flex-col" onSubmit={onSubmit}>
+          <div className="mt-6 flex flex-col">
             <div className="flex flex-col space-y-4">
               <Input
                 placeholder="Email"
@@ -116,27 +126,27 @@ const SignInPage = () => {
 
             <Link
               href="/forgotPassword"
-              className="ml-auto mt-1 font-medium text-royalBlue-4"
+              className="ml-auto mt-1 text-xs font-medium text-royalBlue-4 md:text-sm"
             >
               Forgot password
             </Link>
-
-            <button
-              className="mt-6 rounded bg-primary-4 px-40 py-3 font-medium text-black transition"
-              type="submit"
-              disabled={isLoading}
-            >
-              {isLoading ? "Loading..." : "Sign In"}
-            </button>
-          </form>
-
-          <EmailVerificationDialog
-            email={verificationTo}
-            isOpen={showVerification}
-            setIsOpen={setShowVerification}
-          />
+          </div>
         </div>
-      </div>
+
+        <button
+          className="mt-auto w-full max-w-sm rounded bg-primary-4 py-3 text-base font-medium text-black transition md:mt-6 md:text-lg"
+          type="submit"
+          disabled={isLoading}
+        >
+          {isLoading ? "Loading..." : "Sign In"}
+        </button>
+      </form>
+
+      <EmailVerificationDialog
+        email={verificationTo}
+        isOpen={showVerification}
+        setIsOpen={setShowVerification}
+      />
     </div>
   );
 };

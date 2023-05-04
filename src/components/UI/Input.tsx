@@ -10,7 +10,7 @@ import {
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 
 const inputClass = cva(
-  "font-base w-full rounded border bg-transparent px-4 py-3 transition placeholder:text-charcoal focus:border-gray focus:outline-none focus:ring-0",
+  "font-base w-full text-sm md:text-base rounded border bg-transparent px-4 py-3 transition placeholder:text-charcoal focus:border-gray focus:outline-none focus:ring-0",
   {
     variants: {
       state: {
@@ -84,7 +84,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
 
         {state === "invalid" && errorMessage && (
-          <p className="mt-1 text-xs text-danger-4">{errorMessage}</p>
+          <p className="mt-1 text-xs text-danger-4 md:text-sm">
+            {errorMessage}
+          </p>
         )}
       </div>
     );
